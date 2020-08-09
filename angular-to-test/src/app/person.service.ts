@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Person } from './person';
+import { PersonComponent } from './person/person.component';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,13 @@ import { Person } from './person';
 export class PersonService {
   private persons: Person[];
 
-  constructor() { }
+  constructor() {
+    this.persons = new Array<Person>();
+    this.persons.push({
+      name: "first person",
+      email: "first@example.com"
+    } as Person)
+   }
 
   getPersons() {
     return this.persons;
