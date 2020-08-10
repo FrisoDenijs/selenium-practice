@@ -19,6 +19,18 @@ export class PersonForm extends FormGroup {
             children: this.value.children
         } as Person
     }
+
+    addParent() {
+        (this.controls['parents'] as FormArray).push(new FormControl());
+    }
+
+    addChild() {
+        (this.controls['children'] as FormArray).push(new FormControl());
+    }
+
+    getChildren() {
+        return (this.controls['children'] as FormArray).controls;
+    }
 }
 
 const generateParentsFormArray = (person: Person | undefined) => {
