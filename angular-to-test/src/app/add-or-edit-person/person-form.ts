@@ -4,8 +4,8 @@ import { Person } from '../person';
 export class PersonForm extends FormGroup {
     constructor(person : Person | undefined) {
         super({
-            name: new FormControl(person.name ? person.name : undefined),
-            email: new FormControl(person.email ? person.email : undefined),
+            name: new FormControl(person && person.name ? person.name : undefined),
+            email: new FormControl(person && person.email ? person.email : undefined),
             parents: new FormArray(generateParentsFormArray(person)),
             children: new FormArray(generateChildrenFormArray(person))
         });
@@ -21,9 +21,9 @@ export class PersonForm extends FormGroup {
     }
 }
 
-const generateParentsFormArray = (person: Person) => {
+const generateParentsFormArray = (person: Person | undefined) => {
     const arr = new Array<FormControl>();
-    if (person.parents) {
+    if (person && person.parents) {
         person.parents.forEach((value, index, array) => {
             arr.push(new FormControl(value));
         });
@@ -31,9 +31,9 @@ const generateParentsFormArray = (person: Person) => {
     return arr;
 }
 
-const generateChildrenFormArray = (person: Person) => {
+const generateChildrenFormArray = (person: Person | undefined) => {
     const arr = new Array<FormControl>();
-    if (person.children) {
+    if (person && person.children) {
         person.children.forEach((value, index, array) => {
             arr.push(new FormControl(value));
         });
