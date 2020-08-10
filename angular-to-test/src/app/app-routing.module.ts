@@ -6,8 +6,8 @@ import { AddOrEditPersonComponent } from './add-or-edit-person/add-or-edit-perso
 
 const routes: Routes = [
   { path: 'persons', component: PersonListComponent },
-  { path: 'persons/:id', component: PersonComponent },
   { path: 'persons/add', component: AddOrEditPersonComponent },
+  { path: 'persons/:id', component: PersonComponent },
   { path: 'persons/edit/:id', component: AddOrEditPersonComponent },
   { path: '', pathMatch: 'full', redirectTo: 'persons' }
 ];

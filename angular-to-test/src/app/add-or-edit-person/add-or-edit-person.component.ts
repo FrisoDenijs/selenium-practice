@@ -20,10 +20,11 @@ export class AddOrEditPersonComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.param$ = this.route.params.subscribe(params => {
-      this.id = +params['id'] || undefined; // (+) converts string 'id' to a number
+      this.id = +params['id']; // (+) converts string 'id' to a number
 
       this.personForm = this.id ? new PersonForm(this.personService.getPerson(this.id))
                                 : this.personForm = new PersonForm(undefined);
+                                console.log(this.personForm);
     });
   }
 

@@ -1,9 +1,13 @@
-<p>
-  person-list works!
-</p>
+<h1>Person List</h1>
+
+<a mat-icon-button routerLink="/persons/add" ><mat-icon>add</mat-icon></a>
 
 <ul>
   <li *ngFor="let person of persons; let id = index">
-    <a [routerLink]="['/persons', id]">{{ id + ": " + person.name }}</a>
+    <a mat-button [routerLink]="['/persons', id]">{{ id + ": " + person.name }}</a>
+    <a mat-icon-button [routerLink]="['/persons/edit', id]">
+      <mat-icon>edit</mat-icon>
+  </a>
+  <button mat-icon-button (click)="deletePerson(i)"><mat-icon>delete</mat-icon></button>
   </li>
 </ul>
