@@ -41,4 +41,11 @@ export class AddOrEditPersonComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/persons');
   }
 
+  possibleChildren() {
+    const people = this.personService.getPersons();
+    const possibleChildren = people.filter((person, index, array) => {
+      return index !== this.id;
+    });
+    return possibleChildren;
+  }
 }

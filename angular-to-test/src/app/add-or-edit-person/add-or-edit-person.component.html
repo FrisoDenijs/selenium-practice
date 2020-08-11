@@ -12,7 +12,9 @@
   <br>
   <div *ngFor="let childControl of personForm.getChildren(); let id = index">
     <mat-form-field>
-      <select matNativeControl [formControl]="childControl"></select>
+      <mat-select [formControl]="childControl">
+        <mat-option *ngFor="let possibleChild of possibleChildren()" value="possibleChild">{{possibleChild.name}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <br>
   </div>
