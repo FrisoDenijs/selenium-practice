@@ -30,10 +30,13 @@ export class PersonComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private personService: PersonService) { }
 
   ngOnInit() {
+    console.log(this.dataSource);
+    this.dataSource.data = [];
     this.param$ = this.route.params.subscribe(params => {
        this.id = +params['id']; // (+) converts string 'id' to a number
 
        this.person = this.personService.getPerson(this.id);
+       this.dataSource.data = this.person.children;
     });
   }
 
@@ -60,6 +63,8 @@ export class PersonComponent implements OnInit, OnDestroy {
     node => node.expandable,
     node => node.children
   );
+
+  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
 

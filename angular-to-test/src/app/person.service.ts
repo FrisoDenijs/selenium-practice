@@ -14,6 +14,14 @@ export class PersonService {
       name: "first person",
       email: "first@example.com"
     } as Person)
+    this.persons.push({
+      name: "second person",
+      children: [this.persons[0]]
+    } as Person)
+    this.persons.push({
+      name: "third person",
+      children: [this.persons[1]]
+    } as Person)
    }
 
   getPersons() {
